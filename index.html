@@ -112,7 +112,7 @@ observer.observe(document.body, { childList: true, subtree: true });
 <video class="qrscaner"></video>
 <div style="display: flex;">
 <button type="button" class="start-scan">
-  Начать сканирование
+  Начать сканирование(открыть анкету с нужным id)
 </button>
 <button type="button" class="stop-scan">
   Остановить сканирование
@@ -133,7 +133,7 @@ const qrScanner = new QrScanner(
 );
 function handleQrCode(result) {
     console.log('QR Code scanned:', result);
-		window.location.href = `https://${result}.ru`;
+		window.location.href = `https://mainserver.accreditation.ru/#/eventLines/379/formTypes/1/forms/4094/record/${result}`;
 		qrScanner.stop();
     // Ваш код для обработки результата сканирования
 }
