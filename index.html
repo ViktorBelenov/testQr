@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru"> 
+<head>
+	<meta charset="utf-8">
+		
+	<meta name="viewport" content="width=device-width; initial-scale=1">
+	<!-- <link href="css/style.css" rel="stylesheet"> -->
+	<title></title>
+	<!-- <script>
+		function showHide(selector) {
+			document.querySelector(selector).classList.toggle('disable');
+		}
+		function onA5000Login() {
+			console.log('произошел логин');
+			showHide('#exit');
+		}
+		function onA5000AuthChecked() {
+			console.log('произошел повторный вход');
+			showHide('#exit');
+		}
+	</script> -->
+</head>
+<body>
+	
+	<!-- <div class="main">
+		<div class="wrapper"> -->
+			<!-- <header>
+				<div class="header">
+					<div id="logo">
+						<img class="logo" src="./img/logo.png" width="78" alt="logo"/>
+					</div>
+					<div class="exit" id="exit" onclick="localStorage.clear(); location.reload();">
+						Выйти
+					</div>
+				</div>
+			</header> -->
+
+		  <!-- <div class="box">
+				<div class="box__wrapper">
+					<div class="name">
+						Константин<br>
+						Константинопольский
+					</div>
+					<div class="contacts">
+						<div>
+							<a href="mailto:alma.lawson@example.com">
+								<img src="./img/letter.svg" width="24" alt=""/>
+								alma.lawson@example.com
+							</a>	
+						</div>
+						<div>
+							<a href="tel:+74065550120">
+								<img src="./img/phone.svg" width="24" alt=""/>
+								(406) 555-0120
+							</a>	
+						</div>
+					</div>
+					<div class="info">
+						 <div>
+							<div class="info__title">
+								Время
+							</div>
+							<div class="info__body">
+								00:12
+							</div>
+						</div> 
+						<div>
+							<div class="info__title">
+								Баллы
+							</div>
+							<div class="info__body">
+								<img src="./img/points-ico.svg" width="35" alt=""/>
+								000
+							</div>
+						</div>
+					</div>
+				</div>
+			</div> -->
+      <!-- <div id="embeddedApp" api-key="e31268a77a9c06a819be9f26f5be850cac90986a754d4015fe8803b81a04ac606392510459c73b664f7060fea2a2749d" force-lng-code = "ru" server="fareastserver.accreditation.ru">
+      </div>
+      <script type="text/javascript" src="https://app.accreditation.ru/embedded-app.js"></script>
+    </div>  -->
+
+	<!-- </div>
+</div> -->
+<!-- <script type="text/javascript" src="/qrcode/qrcode.min.js"></script>
+  
+<script>
+function handleMutation(mutationsList, observer) {
+  for (var mutation of mutationsList) {
+      if (mutation.type === 'childList') {
+          // Проверка, добавлен ли нужный контейнер
+          if (document.querySelector('.qrcode')) {
+						const qrCodeConatiner = document.querySelector('.qrcode');
+						if (!qrCodeConatiner.hasChildNodes()) {
+              console.log('Контейнер найден!');
+							console.log(qrCodeConatiner)
+              const myId = window.a5000_platform.translation.store.getState().currentFormRecord.data.value.id.value;
+							console.log(myId)
+						  new QRCode(qrCodeConatiner, myId);
+						  observer.disconnect();
+						}
+          }
+      }
+  }
+}
+// Создание экземпляра MutationObserver с указанием функции обратного вызова
+var observer = new MutationObserver(handleMutation);
+// Начало отслеживания изменений в DOM
+observer.observe(document.body, { childList: true, subtree: true });
+</script> -->
+<video class="qrscaner"></video>
+<div style="display: flex;">
+<button type="button" class="start-scan">
+  Начать сканирование
+</button>
+<button type="button" class="stop-scan">
+  Остановить сканирование
+</button>
+</div>
+<script type="module">
+  import QrScanner from './qr-scanner.min.js';
+  // do something with QrScanner
+const startScaningButton = document.querySelector('.start-scan'); 
+const stopScanButton = document.querySelector('.stop-scan'); 
+
+const videoElem = document.querySelector('.qrscaner');
+const qrScanner = new QrScanner(
+    videoElem,
+    result => console.log('decoded qr code:', result),
+    // No options provided. This will use the old api and is deprecated in the current version until next major version.
+);
+function handleQrCode(result) {
+    console.log('QR Code scanned:', result);
+    // Ваш код для обработки результата сканирования
+}
+startScaningButton.addEventListener("click", () => qrScanner.start());
+stopScanButton.addEventListener("click", () => qrScanner.stop());
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
