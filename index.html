@@ -127,11 +127,14 @@ const stopScanButton = document.querySelector('.stop-scan');
 const videoElem = document.querySelector('.qrscaner');
 const qrScanner = new QrScanner(
     videoElem,
-    result => console.log('decoded qr code:', result),
+    result => handleQrCode(result),
+		
     // No options provided. This will use the old api and is deprecated in the current version until next major version.
 );
 function handleQrCode(result) {
     console.log('QR Code scanned:', result);
+		window.location.href = `https://${result}.ru`;
+		qrScanner.stop();
     // Ваш код для обработки результата сканирования
 }
 startScaningButton.addEventListener("click", () => qrScanner.start());
